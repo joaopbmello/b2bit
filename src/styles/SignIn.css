@@ -1,0 +1,28 @@
+img {
+  max-height: 196px;
+}
+
+label {
+  font-weight: 700;
+}
+
+.form-control {
+  border: 0;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  border-radius: 9px;
+}
+
+.signin {
+  border-radius: 18px;
+}
+
+@media (max-width: 575.98px) {
+  .signin {
+    width: 75%;
+  }
+}
