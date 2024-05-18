@@ -11,10 +11,8 @@ label {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
-  color: white;
-  font-weight: 700;
-  border-radius: 9px;
+  font-weight: 700 !important;
+  border-radius: 9px !important;
 }
 
 .signin {
