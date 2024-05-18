@@ -19,7 +19,7 @@ label {
   border-radius: 18px;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 576px) {
   .signin {
     width: 75%;
   }

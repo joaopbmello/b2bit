@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
+import axios from "axios";
 import B2BitLogo from "../assets/B2Bit Logo.png";
 import "../styles/SignIn.css";
-import axios from "axios";
 
 const validate = (values: { email: string; password: string }) => {
   const errors: { email?: string; password?: string } = {};
@@ -19,7 +19,7 @@ const validate = (values: { email: string; password: string }) => {
   return errors;
 };
 
-const SignIn = () => {
+export default function SignIn() {
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -75,10 +75,10 @@ const SignIn = () => {
           <input
             id="password"
             type="password"
+            value={formik.values.password}
             className="form-control opacity-75"
             placeholder="****************"
             onChange={formik.handleChange}
-            value={formik.values.password}
           />
           {formik.errors.password && (
             <p className="text-danger mt-1">{formik.errors.password}</p>
@@ -90,6 +90,4 @@ const SignIn = () => {
       </form>
     </div>
   );
-};
-
-export default SignIn;
+}
