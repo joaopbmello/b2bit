@@ -3,7 +3,6 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import B2BitLogo from "../assets/B2Bit Logo.png";
 import apiClient from "../services/api-client";
-import "../styles/SignIn.css";
 
 interface FormValues {
   email: string;
@@ -68,47 +67,60 @@ export default function SignIn() {
   });
 
   return (
-    <div className="position-absolute top-50 start-50 translate-middle shadow p-3 signin">
-      <div className="d-flex justify-content-center m-4">
-        <img src={B2BitLogo} alt="B2Bit Logo" className="w-100" />
+    <div className="grid place-content-center h-screen">
+      <div className="sm:w-112 h-max text-lg rounded-2xl shadow-full-lg">
+        <div>
+          <img src={B2BitLogo} alt="B2Bit Logo" className="px-16 pt-16 pb-11" />
+        </div>
+        <form onSubmit={formik.handleSubmit} className="mx-6" noValidate>
+          <div className="mb-7">
+            <label htmlFor="email" className="block mb-2 font-bold">
+              E-mail
+            </label>
+            <input
+              id="email"
+              type="email"
+              className="p-3.5 w-full placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-green-vogue form-input"
+              placeholder="@gmail.com"
+              onChange={formik.handleChange}
+            />
+            {formik.errors.email && (
+              <p className="mt-2 text-base text-red-600">
+                {formik.errors.email}
+              </p>
+            )}
+          </div>
+          <div>
+            <label htmlFor="password" className="block mb-2 font-bold">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={formik.values.password}
+              className="p-3.5 w-full placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-green-vogue form-input"
+              placeholder="****************"
+              onChange={formik.handleChange}
+            />
+            {formik.errors.password && (
+              <p className="mt-2 text-base text-red-600">
+                {formik.errors.password}
+              </p>
+            )}
+          </div>
+          <button
+            type="submit"
+            className={`p-3.5 mt-9 ${
+              error ? "" : "mb-10"
+            } w-full font-bold text-white bg-green-vogue rounded-lg`}
+          >
+            Sign In
+          </button>
+          {error && (
+            <p className="mt-2 mb-10 text-base text-red-600">{error}</p>
+          )}
+        </form>
       </div>
-      <form onSubmit={formik.handleSubmit} noValidate>
-        <div className="mb-4">
-          <label htmlFor="email" className="form-label">
-            E-mail
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="form-control opacity-75"
-            placeholder="@gmail.com"
-            onChange={formik.handleChange}
-          />
-          {formik.errors.email && (
-            <p className="text-danger mt-1">{formik.errors.email}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={formik.values.password}
-            className="form-control opacity-75"
-            placeholder="****************"
-            onChange={formik.handleChange}
-          />
-          {formik.errors.password && (
-            <p className="text-danger mt-1">{formik.errors.password}</p>
-          )}
-        </div>
-        <button type="submit" className="btn btn-primary p-2 w-100">
-          Sign In
-        </button>
-        {error && <p className="text-danger mt-1">{error}</p>}
-      </form>
     </div>
   );
 }
