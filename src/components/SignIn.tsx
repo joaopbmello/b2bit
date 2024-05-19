@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import B2BitLogo from "../assets/B2Bit Logo.png";
-import "../styles/SignIn.css";
 import apiClient from "../services/api-client";
+import "../styles/SignIn.css";
 
 interface FormValues {
   email: string;

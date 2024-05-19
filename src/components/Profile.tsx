@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiClient from "../services/api-client";
 import "../styles/Profile.css";
-import { useNavigate } from "react-router-dom";
 
 interface User {
   name: string;
@@ -14,6 +14,11 @@ interface User {
 export default function Profile() {
   const [user, setUser] = useState<User>();
   const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   useEffect(() => {
     apiClient
@@ -28,8 +33,7 @@ export default function Profile() {
         setUser(response.data);
       })
       .catch(() => {
-        localStorage.removeItem("token");
-        navigate("/login");
+        logout();
       });
   }, []);
 
@@ -58,7 +62,10 @@ export default function Profile() {
             <input id="name" type="email" value={user.email} readOnly />
           </div>
         </div>
-        <button className="btn btn-primary position-absolute top-0 end-0 m-3">
+        <button
+          className="btn btn-primary position-absolute top-0 end-0 m-3"
+          onClick={logout}
+        >
           Logout
         </button>
       </>
