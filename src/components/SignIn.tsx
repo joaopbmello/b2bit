@@ -49,19 +49,10 @@ export default function SignIn() {
     validateOnBlur: false,
     onSubmit: (values) => {
       apiClient
-        .post(
-          "/login/",
-          {
-            email: values.email,
-            password: values.password,
-          },
-          {
-            headers: {
-              Accept: "application/json;version=v1_web",
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post("/login/", {
+          email: values.email,
+          password: values.password,
+        })
         .then((response) => {
           localStorage.setItem("token", response.data.tokens.access);
           navigate("/profile");
