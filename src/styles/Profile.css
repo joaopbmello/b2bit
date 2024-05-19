@@ -1,14 +1,19 @@
-img {
+.profile {
+  border-radius: 16px;
+  min-width: 315px;
+}
+
+.profile img {
   max-height: 72px;
   max-width: 72px;
   border-radius: 8px;
 }
 
-p {
+.profile p {
   margin-bottom: 12px;
 }
 
-input {
+.profile input {
   border: 0;
   margin-left: 12px;
   margin-bottom: 24px;
@@ -19,17 +24,12 @@ input {
   width: 272px;
 }
 
-.profile {
-  border-radius: 16px;
-  min-width: 315px;
-}
-
 @media (max-width: 576px) {
-  .btn-primary {
+  .profile {
     width: 75%;
   }
 
-  .profile {
+  .btn-primary {
     width: 75%;
   }
 }

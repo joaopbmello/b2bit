@@ -1,25 +1,44 @@
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import axios from "axios";
+import { redirect, useNavigate } from "react-router-dom";
 import B2BitLogo from "../assets/B2Bit Logo.png";
 import "../styles/SignIn.css";
+import apiClient from "../services/api-client";
 
-const validate = (values: { email: string; password: string }) => {
-  const errors: { email?: string; password?: string } = {};
+interface FormValues {
+  email: string;
+  password: string;
+}
+
+const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+const validate = (values: FormValues) => {
+  const errors: Partial<FormValues> = {};
 
   if (!values.email) {
-    errors.email = "Please enter an email address";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Please enter a valid email address";
+    errors.email = "Please enter an e-mail address.";
+  } else if (!EMAIL_REGEX.test(values.email)) {
+    errors.email = "Please enter a valid e-mail address.";
   }
 
   if (!values.password) {
-    errors.password = "Please enter your password";
+    errors.password = "Please enter your password.";
   }
 
   return errors;
 };
 
 export default function SignIn() {
+  const [error, setErrors] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/profile");
+    }
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -29,9 +48,9 @@ export default function SignIn() {
     validateOnChange: false,
     validateOnBlur: false,
     onSubmit: (values) => {
-      axios
+      apiClient
         .post(
-          "https://api.homologation.cliqdrive.com.br/auth/login/",
+          "/login/",
           {
             email: values.email,
             password: values.password,
@@ -43,7 +62,15 @@ export default function SignIn() {
             },
           }
         )
-        .then((response) => console.log(response));
+        .then((response) => {
+          localStorage.setItem("token", response.data.tokens.access);
+          navigate("/profile");
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 401)
+            setErrors("Invalid email or password. Please try again.");
+          else setErrors("An error occurred. Please try again.");
+        });
     },
   });
 
@@ -87,6 +114,7 @@ export default function SignIn() {
         <button type="submit" className="btn btn-primary p-2 w-100">
           Sign In
         </button>
+        {error && <p className="text-danger mt-1">{error}</p>}
       </form>
     </div>
   );

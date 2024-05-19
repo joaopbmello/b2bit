@@ -1,8 +1,12 @@
-img {
+.signin {
+  border-radius: 18px;
+}
+
+.signin img {
   max-height: 196px;
 }
 
-label {
+.signin label {
   font-weight: 700;
 }
 
@@ -13,10 +17,6 @@ label {
 .btn-primary {
   font-weight: 700 !important;
   border-radius: 9px !important;
-}
-
-.signin {
-  border-radius: 18px;
 }
 
 @media (max-width: 576px) {
