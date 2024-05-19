@@ -58,7 +58,9 @@ export default function SignIn() {
           navigate("/profile");
         })
         .catch((error) => {
-          if (error.response && error.response.status === 401)
+          if (error.response && error.response.status === 400)
+            setErrors("Please enter your email and password.");
+          else if (error.response && error.response.status === 401)
             setErrors("Invalid email or password. Please try again.");
           else setErrors("An error occurred. Please try again.");
         });
