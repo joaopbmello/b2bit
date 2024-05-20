@@ -43,7 +43,7 @@ npm run dev
 
 ### 🧪 How to run the tests
 
-```
+```bash
 # From the project directory, run the tests
 npm run test
 ```
