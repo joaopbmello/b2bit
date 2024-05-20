@@ -80,7 +80,7 @@ export default function SignIn() {
             <input
               id="email"
               type="email"
-              className="input-form"
+              className="input input-signin"
               placeholder="@gmail.com"
               onChange={formik.handleChange}
             />
@@ -96,7 +96,7 @@ export default function SignIn() {
               id="password"
               type="password"
               value={formik.values.password}
-              className="input-form"
+              className="input input-signin"
               placeholder="****************"
               onChange={formik.handleChange}
             />
