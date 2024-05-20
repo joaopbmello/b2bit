@@ -2,6 +2,8 @@
 
 This project is a simple yet functional web application created for b2bit's challenge as part of its selection process. The application consists of a login screen that redirects the user to their profile page, where they can access some of their personal information and log out.
 
+You can check the project [here](https://b2bit-5olurnqmk-joaopbmello-ca821980.vercel.app).
+
 ## 🛠️ Technologies
 
 - TypeScript
@@ -13,6 +15,7 @@ This project is a simple yet functional web application created for b2bit's chal
 - Tailwind CSS
 - Vitest
 - Testing Library
+- Vercel
 
 ## ✨ Features
 
