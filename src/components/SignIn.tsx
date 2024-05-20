@@ -74,51 +74,45 @@ export default function SignIn() {
         </div>
         <form onSubmit={formik.handleSubmit} className="mx-6" noValidate>
           <div className="mb-7">
-            <label htmlFor="email" className="block mb-2 font-bold">
+            <label htmlFor="email" className="label font-bold">
               E-mail
             </label>
             <input
               id="email"
               type="email"
-              className="p-3.5 w-full placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-green-vogue form-input"
+              className="input-form"
               placeholder="@gmail.com"
               onChange={formik.handleChange}
             />
             {formik.errors.email && (
-              <p className="mt-2 text-base text-red-600">
-                {formik.errors.email}
-              </p>
+              <p className="error">{formik.errors.email}</p>
             )}
           </div>
           <div>
-            <label htmlFor="password" className="block mb-2 font-bold">
+            <label htmlFor="password" className="label font-bold">
               Password
             </label>
             <input
               id="password"
               type="password"
               value={formik.values.password}
-              className="p-3.5 w-full placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-green-vogue form-input"
+              className="input-form"
               placeholder="****************"
               onChange={formik.handleChange}
             />
             {formik.errors.password && (
-              <p className="mt-2 text-base text-red-600">
-                {formik.errors.password}
-              </p>
+              <p className="error">{formik.errors.password}</p>
             )}
           </div>
           <button
             type="submit"
-            className={`p-3.5 mt-9 ${
+            className={`btn p-3.5 mt-9 ${
               error ? "" : "mb-10"
-            } w-full font-bold text-white bg-green-vogue rounded-lg`}
+            } w-full rounded-lg`}
           >
             Sign In
           </button>
-          {error && (
-            <p className="mt-2 mb-10 text-base text-red-600">{error}</p>
-          )}
+          {error && <p className="error mb-10">{error}</p>}
         </form>
       </div>
     </div>

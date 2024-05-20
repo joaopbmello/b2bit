@@ -3,3 +3,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply font-bold text-white bg-green-vogue;
+  }
+
+  .label {
+    @apply block mb-2;
+  }
+
+  .input {
+    @apply w-full placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none form-input;
+  }
+
+  .input-signin {
+    @apply p-3.5 focus:ring-green-vogue;
+  }
+
+  .input-profile {
+    @apply p-4 text-xs focus:ring-0 cursor-default;
+  }
+
+  .error {
+    @apply mt-2 text-base text-red-600;
+  }
+}

@@ -41,7 +41,7 @@ export default function Profile() {
       <>
         <nav className="flex justify-end items-center h-18 bg-white">
           <button
-            className="p-2.5 mr-9 w-68 text-base font-bold text-white bg-green-vogue rounded-md"
+            className="btn p-2.5 mr-9 w-68 text-base rounded-md"
             onClick={logout}
           >
             Logout
@@ -58,26 +58,26 @@ export default function Profile() {
               />
             </div>
             <div className="mx-7 mb-5">
-              <p className="mb-2 text-sm">
+              <label className="label text-sm">
                 Your <span className="font-bold">Name</span>
-              </p>
+              </label>
               <input
                 id="name"
                 type="text"
                 value={user.name}
-                className="p-4 w-full text-xs placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-0 cursor-default form-input"
+                className="input input-profile"
                 readOnly
               />
             </div>
             <div className="mx-7 mb-7">
-              <p className="mb-2 text-sm">
+              <label className="label text-sm">
                 Your <span className="font-bold">E-mail</span>
-              </p>
+              </label>
               <input
                 id="name"
                 type="email"
                 value={user.email}
-                className="p-4 w-full text-xs placeholder:text-neutral-400 bg-gray-100 rounded-lg border-none focus:ring-0 cursor-default form-input"
+                className="input input-profile"
                 readOnly
               />
             </div>
