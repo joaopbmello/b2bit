@@ -27,7 +27,7 @@ You can check the project [here](https://b2bit-5olurnqmk-joaopbmello-ca821980.ve
 
 ## ▶️ How to run it
 
-```
+```bash
 # Clone the repository
 git clone https://github.com/joaopbmello/b2bit.git
 
